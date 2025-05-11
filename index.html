@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saki Narita — Generative AI Portfolio</title>
+    <meta name="description" content="Portfolio site for the Generative AI for Work &amp; Research Productivity course by Saki Narita." />
+
+    <style>
+        /* ─────────────────────────── Base reset */
+        *{box-sizing:border-box;margin:0;padding:0;}
+        :root{--accent:#001f54;}/* navy */
+        body{
+            font-family:'Futura','Futura PT','Century Gothic',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+            background:#0b1225;color:#e5e7eb;line-height:1.6;overflow-x:hidden;
+        }
+        a{color:inherit;text-decoration:none}
+        ul{list-style:none}
+        img{max-width:100%;height:auto;display:block}
+
+        /* ─────────────────────────── Cosmic backdrop */
+        body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at bottom,#1b2735 0%,#090a0f 100%);} 
+        body::after{content:"";position:fixed;inset:0;z-index:-1;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 3 3"><circle cx="1.5" cy="1.5" r="1.5" fill="white" fill-opacity="0.3"/></svg>') repeat;animation:moveStars 60s linear infinite;opacity:.3;}
+        @keyframes moveStars{from{transform:translateY(0)}to{transform:translateY(-1000px)}}
+
+        /* ─────────────────────────── Navbar */
+        nav{position:fixed;top:0;width:100%;background:rgba(10,15,35,.6);backdrop-filter:blur(6px);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;z-index:1000}
+        nav .brand{font-weight:700;font-size:1.1rem}
+        nav ul{display:flex;gap:32px}
+        nav a:hover{opacity:.8}
+
+        /* ─────────────────────────── Hero */
+        .hero{min-height:95vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px}
+        .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;max-width:900px;line-height:1.15;color:var(--accent)}
+        .hero .tagline{font-size:clamp(1rem,2.8vw,1.75rem);margin-top:8px;font-weight:600}
+        .hero .intro{margin-top:18px;max-width:700px;font-size:1.1rem;opacity:.88}
+        .features{margin:32px auto 24px;text-align:left;max-width:620px}
+        .features li{position:relative;padding-left:28px;margin-bottom:10px}
+        .features li::before{content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-weight:700}
+        .audience{margin-top:28px;max-width:700px;font-size:1rem;line-height:1.5}
+        .audience strong{color:var(--accent)}
+        .btn-group{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+        .btn{padding:12px 28px;border-radius:6px;font-weight:600;cursor:pointer;transition:opacity .2s}
+        .btn-primary{background:var(--accent);color:#fff;border:none}
+        .btn-ghost{background:#fff;color:var(--accent);border:none}
+        .btn:hover{opacity:.9}
+
+        /* ─────────────────────────── Sections */
+        section{padding:100px 20px;max-width:1100px;margin:auto}
+        h2{font-size:2rem;margin-bottom:32px;text-align:center;color:var(--accent)}
+
+        /* ─────────────────────────── Intro block */
+        .intro-block{display:flex;flex-direction:column;align-items:center;gap:24px;margin-bottom:60px}
+        .profile-pic{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);background:rgba(255,255,255,.05)}
+        .bio{max-width:700px;text-align:center;font-size:1.1rem;line-height:1.5}
+
+        /* ─────────────────────────── Course modules cards */
+        .module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+        .module{background:rgba(255,255,255,.05);padding:24px;border-radius:8px;border:1px solid rgba(255,255,255,.07)}
+        .module h3{font-size:1.25rem;margin-bottom:8px;color:var(--accent)}
+        .module p{font-size:.95rem;opacity:.85}
+
+        /* ─────────────────────────── Weekly submissions */
+        .submissions-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+        .submissions-list a{display:block;background:rgba(255,255,255,.05);padding:20px;border-radius:6px;border:1px solid rgba(255,255,255,.07);text-align:center;font-weight:500}
+        .submissions-list a:hover{background:rgba(255,255,255,.08)}
+
+        /* ─────────────────────────── Footer */
+        footer{padding:60px 20px;text-align:center;font-size:.9rem;opacity:.7}
+
+        /* ─────────────────────────── Light‑mode tweaks */
+        @media (prefers-color-scheme:light){
+            body{color:#1e293b}
+            nav{background:rgba(255,255,255,.7)}
+            body::before{background:linear-gradient(180deg,#eaf2ff 0%,#d6e4ff 100%)}
+            body::after{opacity:.05}
+            .module{background:#fff;border-color:#e2e8f0}
+            .submissions-list a{background:#fff;border-color:#e2e8f0}
+            .btn-ghost{background:var(--accent);color:#fff}
+            .profile-pic{background:#f1f5f9}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─────────────────────────── Navbar -->
+    <nav>
+        <div class="brand">Saki Narita</div>
+        <ul>
+            <li><a href="#about">Home</a></li>
+            <li><a href="#course">Modules</a></li>
+            <li><a href="#submissions">Submissions</a></li>
+        </ul>
+    </nav>
+
+    <!-- ─────────────────────────── Hero / Course overview top -->
+    <section class="hero" id="about">
+        <h1>Generative AI for Work &amp; Research Productivity</h1>
+        <h2 class="tagline">No‑Code AI Tools for Task Automation</h2>
+        <p class="intro">Are you copy‑pasting text into ChatGPT but struggling to see how AI can substantially transform your work? In this 8‑week course, you’ll learn to automate data analysis, content creation, knowledge management, and routine tasks as you build AI solutions to boost productivity for yourself and your team.</p>
+
+        <ul class="features">
+            <li>Automate time‑consuming document, spreadsheet, and data tasks</li>
+            <li>Learn AI tools for knowledge organization and literature reviews</li>
+            <li>Develop custom chatbots to support your projects or team</li>
+            <li>Create professional and scientific visuals/presentations with AI</li>
+            <li>Apply your knowledge in a hands‑on capstone project</li>
+            <li>Get real‑time support in live workshops, help sessions, and forums</li>
+        </ul>
+
+        <p class="audience"><strong>👨‍💻 Is this course for you?</strong><br />Designed for students, faculty, and researchers in health and life science fields who want concrete strategies to accomplish more with modern AI tools. No coding experience is required.</p>
+
+        <div class="btn-group">
+            <a class="btn btn-primary" href="#course">Explore modules</a>
+            <a class="btn btn-ghost" href="#submissions">View submissions</a>
+        </div>
+    </section>
+
+    <!-- ─────────────────────────── Personal intro block -->
+    <section id="intro-block">
+        <div class="intro-block">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPEhEPERINDx8XExMTFhEQEhcYHh0kKDQsJCYxJx8tLz0AAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIAOgAqgMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAADAAECBAYFBwj/xABFEAACAQIEAwYDBQYFBwUAAAABAgADEQQSITEFQVEGEyJhcYEykaEGQrHB0fAHFCNSYoLh8RUzUmJTgpKi4fAkU5OkNWL/xAAbAQEBAQEBAQEBAAAAAAAAAAAAAgEDBAUGB//EADARAAIBAwIDBAMIAwEAAAAAAAABAgMRBBIhBTFBURMiMmFxgZEykXGB0RQVI0KhscHR8SQz/9oADAMBAAIRAxEAPwDRWAKKOgKvEb8ySy393U4ziddI/ijCXKRkq0r4jI/hOfklPkXmPyKeu6iwr4xpxJp80SjYL94/wDmvyK5JzHzAAOAuAOmkdM0ENKntDcRWNdacNT5THVWUqxJibk7kELsHQgc+xqhCEKNCEIo0IQLQhpJhNCaQhBaxZAMK6SPVQe3I6/ynnVi0QWcycRvAmkYE5ABRp0JY7x4fGkz6LDj9a9jMBgSfshSbwzHt+wHnUopRc8LQMP/KT9z8K5c40YvujX2rhpuz3vvqOSCx57+9VdnP0Z1HTmNNPqXcqMJ8WBcMjf6cA1eLA07yHe1uJ2NA7D+aqQzsHVOarhk2ib2t7uVQ3IY8yGUe1Ubm3UD0ZqkVx5sT6jR5ruo4lW3YkcLjf9y1Xp47bR409s1MTiZGKeDsqlsQMEc5BqQsirfqq7U+sySx3phl1E+a1m4krJAzHaWYKljyXB6fatpnwyYEd1Zp/Qz7qXwwlzNNbh0wPxHEL/AJORNZrgjRh7UtiVWZ9Xf6mvOaCLUBClUCg1AhAiJAqBCEQEIRAgMuyR12dfY8upUpKnKtAnNreIbdIhPqQSNqVfvkE+Was0HA1vlb+kuuFUlzRN2pnlBzFj72K+N9ZjcPB+6tKQXB0uiG3hjr0mNO5lyQWzCrnJDkb+XvW4zkes6KioZI/k/1rVGLhdG4sW32uVlXxFs6Ea7SEdR0UdR0qpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKR//2Q==" alt="Saki Narita" class="profile-pic" />
+            <p class="bio">Hello! I’m <strong>Saki Narita</strong>, a health‑science consultant exploring how generative AI can streamline research and professional workflows.</p>
+        </div>
+    </section>
+
+    <!-- ─────────────────────────── Detailed modules -->
+    <section id="course">
+        <h2>Course modules</h2>
+        <div class="module-grid">
+            <div class="module"><h3>Documents, Presentations &amp; Websites</h3><p>LLM fundamentals, content generation, Markdown docs, AI presentations.</p></div>
+            <div class="module"><h3>Automated Data Analysis</h3><p>Code Interpreter, Julius &amp; Windsurf for data wrangling, visualization &amp; reporting.</p></div>
+            <div class="module"><h3>GenAI for Research &amp; Text Analysis</h3><p>Elicit, LiteRev, summarization, classification &amp; sentiment analysis.</p></div>
+            <div class="module"><h3>Custom GPTs &amp; Chatbots</h3><p>RAG systems, Botpress workflows &amp; API integrations.</p></div>
+            <div class="module"><h3>AI Workflows for Task Automation</h3><p>Lindy automations, Make.com orchestrations, Gmail &amp; GSheets integrations.</p></div>
+            <div class="module"><h3>GenAI for Communication &amp; Outreach</h3><p>Ideogram visuals, InVideo AI content production &amp; scheduling.</p></div>
+            <div class="module"><h3>Capstone Project &amp; Showcase</h3><p>Design, integrate, and present a real‑world AI solution.</p></div>
+        </div>
+        <p style="text-align:center;margin-top:48px;font-size:1rem;">Tuition: <strong>$250/mo × 2</strong>  |  30‑day full refund</p>
+    </section>
+
+    <!-- ─────────────────────────── Weekly submissions -->
+    <section id="submissions">
+        <h2>My weekly submissions</h2>
+        <div class="submissions-list">
+            <a href="#">Week 1 — Coming soon</a>
+            <a href="#">Week 2 — Coming soon</a>
+            <a href="#">Week 3 — Coming soon</a>
+            <
