@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saki Narita — Generative AI Portfolio</title>
-    <meta name="description" content="Portfolio site for the Generative AI for Work &amp; Research Productivity course by Saki Narita." />
+    <title>Saki Narita — Generative AI Portfolio</title>
+    <meta name="description" content="Portfolio site for the Generative AI for Work & Research Productivity course by Saki Narita." />
 
     <style>
         /* ─────────────────────────── Base reset */
@@ -20,7 +20,7 @@
 
         /* ─────────────────────────── Cosmic backdrop */
         body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at bottom,#1b2735 0%,#090a0f 100%);} 
-        body::after{content:"";position:fixed;inset:0;z-index:-1;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 3 3"><circle cx="1.5" cy="1.5" r="1.5" fill="white" fill-opacity="0.3"/></svg>') repeat;animation:moveStars 60s linear infinite;opacity:.3;}
+        body::after{content:"";position:fixed;inset:0;z-index:-1;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 3 3"><circle cx="1.5" cy="1.5" r="1.5" fill="white" fill-opacity="0.3"/></svg>') repeat;animation:moveStars 60s linear infinite;opacity:.25;pointer-events:none;}
         @keyframes moveStars{from{transform:translateY(0)}to{transform:translateY(-1000px)}}
 
         /* ─────────────────────────── Navbar */
@@ -31,6 +31,8 @@
 
         /* ─────────────────────────── Hero */
         .hero{min-height:95vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px}
+        .profile-pic{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);background:rgba(255,255,255,.05);margin-bottom:24px}
+        .bio{max-width:700px;text-align:center;font-size:1.1rem;line-height:1.5;margin-bottom:40px}
         .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;max-width:900px;line-height:1.15;color:var(--accent)}
         .hero .tagline{font-size:clamp(1rem,2.8vw,1.75rem);margin-top:8px;font-weight:600}
         .hero .intro{margin-top:18px;max-width:700px;font-size:1.1rem;opacity:.88}
@@ -45,24 +47,20 @@
         .btn-ghost{background:#fff;color:var(--accent);border:none}
         .btn:hover{opacity:.9}
 
-        /* ─────────────────────────── Sections */
+        /* ─────────────────────────── Sections & Headings */
         section{padding:100px 20px;max-width:1100px;margin:auto}
         h2{font-size:2rem;margin-bottom:32px;text-align:center;color:var(--accent)}
 
-        /* ─────────────────────────── Intro block */
-        .intro-block{display:flex;flex-direction:column;align-items:center;gap:24px;margin-bottom:60px}
-        .profile-pic{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);background:rgba(255,255,255,.05)}
-        .bio{max-width:700px;text-align:center;font-size:1.1rem;line-height:1.5}
-
         /* ─────────────────────────── Course modules cards */
-        .module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+        .module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
         .module{background:rgba(255,255,255,.05);padding:24px;border-radius:8px;border:1px solid rgba(255,255,255,.07)}
-        .module h3{font-size:1.25rem;margin-bottom:8px;color:var(--accent)}
-        .module p{font-size:.95rem;opacity:.85}
+        .module h3{font-size:1.3rem;margin-bottom:8px;color:var(--accent)}
+        .module p{font-size:.95rem;opacity:.9;margin-bottom:8px}
+        .module p strong{display:block;margin-top:6px;color:#fff;opacity:.9;letter-spacing:.5px}
 
         /* ─────────────────────────── Weekly submissions */
-        .submissions-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-        .submissions-list a{display:block;background:rgba(255,255,255,.05);padding:20px;border-radius:6px;border:1px solid rgba(255,255,255,.07);text-align:center;font-weight:500}
+        .submissions-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px;max-width:600px;margin:0 auto}
+        .submissions-list a{display:block;padding:14px;border-radius:6px;border:1px solid rgba(255,255,255,.07);text-align:center;font-weight:500;background:rgba(255,255,255,.05)}
         .submissions-list a:hover{background:rgba(255,255,255,.08)}
 
         /* ─────────────────────────── Footer */
@@ -93,22 +91,25 @@
         </ul>
     </nav>
 
-    <!-- ─────────────────────────── Hero / Course overview top -->
+    <!-- ─────────────────────────── Hero -->
     <section class="hero" id="about">
-        <h1>Generative AI for Work &amp; Research Productivity</h1>
+        <img src="https://github.com/SN-ghub/graph-ai-portofolio/blob/main/SakiNARITA_bio.jpg?raw=true" alt="Saki Narita" class="profile-pic" />
+        <p class="bio">Hello! I’m <strong>Saki Narita</strong>, a health‑science consultant exploring how generative AI can streamline research and professional workflows.</p>
+
+        <h1>Generative AI for Work &amp; Research Productivity</h1>
         <h2 class="tagline">No‑Code AI Tools for Task Automation</h2>
-        <p class="intro">Are you copy‑pasting text into ChatGPT but struggling to see how AI can substantially transform your work? In this 8‑week course, you’ll learn to automate data analysis, content creation, knowledge management, and routine tasks as you build AI solutions to boost productivity for yourself and your team.</p>
+        <p class="intro">Are you copy‑pasting text into ChatGPT but struggling to see how AI can substantially transform your work? In this 8‑week course, you’ll learn to automate data analysis, content creation, knowledge management, and routine tasks as you build AI solutions to boost productivity for yourself and your team.</p>
 
         <ul class="features">
             <li>Automate time‑consuming document, spreadsheet, and data tasks</li>
-            <li>Learn AI tools for knowledge organization and literature reviews</li>
+            <li>Learn AI tools for knowledge organization and literature reviews</li>
             <li>Develop custom chatbots to support your projects or team</li>
-            <li>Create professional and scientific visuals/presentations with AI</li>
+            <li>Create professional and scientific visuals/presentations with AI</li>
             <li>Apply your knowledge in a hands‑on capstone project</li>
             <li>Get real‑time support in live workshops, help sessions, and forums</li>
         </ul>
 
-        <p class="audience"><strong>👨‍💻 Is this course for you?</strong><br />Designed for students, faculty, and researchers in health and life science fields who want concrete strategies to accomplish more with modern AI tools. No coding experience is required.</p>
+        <p class="audience"><strong>👨‍💻 Is this course for you?</strong><br />Designed for students, faculty, and researchers in health and life science fields who want concrete strategies to accomplish more with modern AI tools. No coding experience is required.</p>
 
         <div class="btn-group">
             <a class="btn btn-primary" href="#course">Explore modules</a>
@@ -116,34 +117,75 @@
         </div>
     </section>
 
-    <!-- ─────────────────────────── Personal intro block -->
-    <section id="intro-block">
-        <div class="intro-block">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPEhEPERINDx8XExMTFhEQEhcYHh0kKDQsJCYxJx8tLz0AAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIAOgAqgMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAADAAECBAYFBwj/xABFEAACAQIEAwYDBQYFBwUAAAABAgADEQQSITEFQVEGEyJhcYEykaEGQrHB0fAHFCNSYoLh8RUzUmJTgpKi4fAkU5OkNWL/xAAbAQEBAQEBAQEBAAAAAAAAAAAAAgEDBAUGB//EADARAAIBAwIDBAMIAwEAAAAAAAABAgMRBBIhBTFBURMiMmFxgZEykXGB0RQVI0KhscHR8SQz/9oADAMBAAIRAxEAPwDRWAKKOgKvEb8ySy393U4ziddI/ijCXKRkq0r4jI/hOfklPkXmPyKeu6iwr4xpxJp80SjYL94/wDmvyK5JzHzAAOAuAOmkdM0ENKntDcRWNdacNT5THVWUqxJibk7kELsHQgc+xqhCEKNCEIo0IQLQhpJhNCaQhBaxZAMK6SPVQe3I6/ynnVi0QWcycRvAmkYE5ABRp0JY7x4fGkz6LDj9a9jMBgSfshSbwzHt+wHnUopRc8LQMP/KT9z8K5c40YvujX2rhpuz3vvqOSCx57+9VdnP0Z1HTmNNPqXcqMJ8WBcMjf6cA1eLA07yHe1uJ2NA7D+aqQzsHVOarhk2ib2t7uVQ3IY8yGUe1Ubm3UD0ZqkVx5sT6jR5ruo4lW3YkcLjf9y1Xp47bR409s1MTiZGKeDsqlsQMEc5BqQsirfqq7U+sySx3phl1E+a1m4krJAzHaWYKljyXB6fatpnwyYEd1Zp/Qz7qXwwlzNNbh0wPxHEL/AJORNZrgjRh7UtiVWZ9Xf6mvOaCLUBClUCg1AhAiJAqBCEQEIRAgMuyR12dfY8upUpKnKtAnNreIbdIhPqQSNqVfvkE+Was0HA1vlb+kuuFUlzRN2pnlBzFj72K+N9ZjcPB+6tKQXB0uiG3hjr0mNO5lyQWzCrnJDkb+XvW4zkes6KioZI/k/1rVGLhdG4sW32uVlXxFs6Ea7SEdR0UdR0qpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKUpSlKR//2Q==" alt="Saki Narita" class="profile-pic" />
-            <p class="bio">Hello! I’m <strong>Saki Narita</strong>, a health‑science consultant exploring how generative AI can streamline research and professional workflows.</p>
-        </div>
-    </section>
-
-    <!-- ─────────────────────────── Detailed modules -->
+    <!-- ─────────────────────────── Course Modules -->
     <section id="course">
         <h2>Course modules</h2>
         <div class="module-grid">
-            <div class="module"><h3>Documents, Presentations &amp; Websites</h3><p>LLM fundamentals, content generation, Markdown docs, AI presentations.</p></div>
-            <div class="module"><h3>Automated Data Analysis</h3><p>Code Interpreter, Julius &amp; Windsurf for data wrangling, visualization &amp; reporting.</p></div>
-            <div class="module"><h3>GenAI for Research &amp; Text Analysis</h3><p>Elicit, LiteRev, summarization, classification &amp; sentiment analysis.</p></div>
-            <div class="module"><h3>Custom GPTs &amp; Chatbots</h3><p>RAG systems, Botpress workflows &amp; API integrations.</p></div>
-            <div class="module"><h3>AI Workflows for Task Automation</h3><p>Lindy automations, Make.com orchestrations, Gmail &amp; GSheets integrations.</p></div>
-            <div class="module"><h3>GenAI for Communication &amp; Outreach</h3><p>Ideogram visuals, InVideo AI content production &amp; scheduling.</p></div>
-            <div class="module"><h3>Capstone Project &amp; Showcase</h3><p>Design, integrate, and present a real‑world AI solution.</p></div>
+            <div class="module">
+                <h3>Documents, Presentations &amp; Websites</h3>
+                <p>Generate high‑quality content for reports, papers, presentations and websites. Learn how large language models (LLMs) work and how to get the most out of them.</p>
+                <p><strong>APPLICATIONS:</strong> content creation, documentation, web development</p>
+                <p><strong>TOPICS:</strong> LLM fundamentals, content generation, no‑code websites, Markdown documents, AI presentations</p>
+            </div>
+            <div class="module">
+                <h3>Automated Data Analysis</h3>
+                <p>Master AI tools for analyzing data, manipulating files, and creating automated reports. Use Julius, ChatGPT Code Interpreter and Windsurf to process datasets, visualize results, and generate reports quickly.</p>
+                <p><strong>APPLICATIONS:</strong> data cleaning, data visualization, reporting, decision support</p>
+                <p><strong>TOPICS:</strong> ChatGPT Code Interpreter, TheBricks dashboards, Julius, Windsurf, data visualization</p>
+            </div>
+            <div class="module">
+                <h3>GenAI for Research &amp; Text Analysis</h3>
+                <p>Learn AI techniques for literature search, text analysis, and knowledge synthesis. Use tools like Elicit &amp; LiteRev for literature reviews, and deploy LLMs for text classification, sentiment analysis and summarization.</p>
+                <p><strong>APPLICATIONS:</strong> literature review, knowledge synthesis, text analysis</p>
+                <p><strong>TOPICS:</strong> Elicit, LiteRev, text summarization, text classification, sentiment analysis, knowledge extraction</p>
+            </div>
+            <div class="module">
+                <h3>Custom GPTs &amp; Chatbots</h3>
+                <p>Build chatbots for research assistance, knowledge management, or specific task support. Explore RAG systems, API integrations, and Botpress workflows.</p>
+                <p><strong>APPLICATIONS:</strong> customer service, knowledge management</p>
+                <p><strong>TOPICS:</strong> RAG systems, Custom GPT Builder, Botpress workflows, API integration, knowledge base connection</p>
+            </div>
+            <div class="module">
+                <h3>AI Workflows for Task Automation</h3>
+                <p>Automate repetitive tasks across various platforms and workflows. Configure systems with Lindy and Make.com to reclaim hours of your workweek.</p>
+                <p><strong>APPLICATIONS:</strong> workflow automation, email management, administrative tasks</p>
+                <p><strong>TOPICS:</strong> Lindy automations, Make.com workflows, GSheets integration, Gmail API, task orchestration</p>
+            </div>
+            <div class="module">
+                <h3>GenAI for Communication &amp; Outreach</h3>
+                <p>Use AI tools to create assets for research dissemination and professional communications. Design visuals and presentations for sharing findings, pitching ideas or building awareness.</p>
+                <p><strong>APPLICATIONS:</strong> outreach, digital marketing, brand assets</p>
+                <p><strong>TOPICS:</strong> Ideogram image generation, Lindy marketing flows, InVideo AI production, lead enrichment, content scheduling</p>
+            </div>
+            <div class="module">
+                <h3>Capstone Project &amp; Showcase</h3>
+                <p>Design and implement an AI solution for a real‑world scenario. Receive feedback, troubleshoot technical issues, and present your work to your peers.</p>
+                <p><strong>APPLICATIONS:</strong> portfolio development, solution design</p>
+                <p><strong>TOPICS:</strong> project scoping, workflow design, tool integration, presentations and feedback</p>
+            </div>
         </div>
-        <p style="text-align:center;margin-top:48px;font-size:1rem;">Tuition: <strong>$250/mo × 2</strong>  |  30‑day full refund</p>
     </section>
 
-    <!-- ─────────────────────────── Weekly submissions -->
+    <!-- ─────────────────────────── Weekly Submissions -->
     <section id="submissions">
-        <h2>My weekly submissions</h2>
+        <h2>Weekly submissions</h2>
         <div class="submissions-list">
-            <a href="#">Week 1 — Coming soon</a>
-            <a href="#">Week 2 — Coming soon</a>
-            <a href="#">Week 3 — Coming soon</a>
-            <
+            <a href="#">Week 1</a>
+            <a href="#">Week 2</a>
+            <a href="#">Week 3</a>
+            <a href="#">Week 4</a>
+            <a href="#">Week 5</a>
+            <a href="#">Week 6</a>
+            <a href="#">Week 7</a>
+            <a href="#">Week 8</a>
+        </div>
+    </section>
+
+    <!-- ─────────────────────────── Footer -->
+    <footer>
+        © 2025 Saki Narita — Generative AI Portfolio
+    </footer>
+
+</body>
+</html>
+
