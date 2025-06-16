@@ -30,7 +30,7 @@
         nav a:hover{opacity:.8}
 
         /* ─────────────────────────── Hero */
-        .hero{min-height:95vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px}
+        .hero{min-height: 95vh;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;padding: clamp(100px, 15vh, 140px) 20px 0; /* <-- add top padding */}
         .profile-pic{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);background:rgba(255,255,255,.05);margin-bottom:24px}
         .bio{max-width:700px;text-align:center;font-size:1.1rem;line-height:1.5;margin-bottom:40px}
         .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;max-width:900px;line-height:1.15;color:var(--accent)}
